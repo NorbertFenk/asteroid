@@ -1,7 +1,7 @@
 FROM zalox/manjaro
 
-RUN pacman -Sy \
-    && pacman -S cmake \
-    && pacman -S make \
-    && pacman -S gcc \
-    && pacman -S sfml
+RUN pacman -Sy && pacman -S --noconfirm\
+    cmake \
+    make \
+    gcc \
+    sfml
