@@ -1,10 +1,8 @@
 cmake_minimum_required(VERSION 3.9)
 
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
+set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-set(CMAKE_MODULE_PATH "/usr/share/SFML/cmake/Modules" ${CMAKE_MODULE_PATH})
-find_package(SFML REQUIRED system window graphics)
-
-include_directories(src)
+find_package(SFML COMPONENTS graphics system REQUIRED)
 
 add_subdirectory(src)
