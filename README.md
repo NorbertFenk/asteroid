@@ -17,6 +17,7 @@ If you installed SFML 2.5 to your system than you can easily compile and run the
 
 ```
 # build
+cd <project source dir>
 take build
 cmake ..
 make
@@ -29,14 +30,27 @@ cd build/src
 
 #### Preferred to run this stuff in docker
 
-If your system's package manager does not able to install SFML 2.5 or you just prefer using, docker than you can use the following command.
+If your system's package manager does not able to install SFML 2.5 or you just prefer using docker than you should follow these steps.
 
-**NOTE At the moment you can not run the binary inside the docker container but this is my next task.**
+##### Docker install
+e.g. install steps on Ubuntu: https://docs.docker.com/install/linux/docker-ce/ubuntu/
+
+Optional but recommended post installation steps: https://docs.docker.com/install/linux/linux-postinstall/
+
+##### Make it run
+
+I followed this page to make the container able to attach to the host X server's: https://dzone.com/articles/docker-x11-client-via-ssh. This is not the fastest solution but I think it will be good enough at first sight.
 
 ```
-docker run --rm -it -v <source-directory>:/source norbertfenk/asteroid bash
+docker container run --rm -it \
+        --net=host \
+        --env="DISPLAY" \
+        --volume="$HOME/.Xauthority:/root/.Xauthority:rw" \
+        -v <source-directory>:/source \
+        norbertfenk/asteroid \
+        bash
 ```
-Inside the container you should run the same commands as above.
+Inside the container you should run the same commands as above. Pay attention if you do not change the docker run command than the source will be mounted under the ```/source``` folder.
 
 ### SFML 2.4 section
 
