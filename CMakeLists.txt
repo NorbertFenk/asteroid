@@ -6,3 +6,4 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 find_package(SFML COMPONENTS graphics system REQUIRED)
 
 add_subdirectory(src)
+add_subdirectory(test)
